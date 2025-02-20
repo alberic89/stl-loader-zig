@@ -4,7 +4,7 @@ pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const stl_loader = b.addModule("root", .{
+    const stl_loader = b.addModule("stl-loader", .{
         .root_source_file = b.path("src/stl-loader-zig.zig"),
     });
 
@@ -15,7 +15,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
-    exe.root_module.addImport("stl_loader", stl_loader);
+    exe.root_module.addImport("stl-loader", stl_loader);
 
     b.installArtifact(exe);
 
